@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTRA-IMMUNE — Mission Control</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>ASTRA-IMMUNE</h1>
+    <p class="subtitle">Mission Control</p>
+    <div class="connect-bar">
+      <input id="espIp" type="text" placeholder="ESP32 IP address, e.g. 192.168.1.42">
+      <button id="connectBtn">Connect</button>
+      <span id="connStatus" class="status disconnected">Disconnected</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="telemetry-panel">
+      <h2>Telemetry</h2>
+      <div class="sensor-card" id="card-ultrasonic">
+        <div class="sensor-name">Ultrasonic (distance)</div>
+        <div class="sensor-value" id="val-ultrasonic">—</div>
+        <div class="trust-bar"><div class="trust-fill" id="trust-ultrasonic"></div></div>
+        <div class="sensor-status" id="status-ultrasonic">nominal</div>
+      </div>
+      <div class="sensor-card" id="card-ir">
+        <div class="sensor-name">IR sensor</div>
+        <div class="sensor-value" id="val-ir">—</div>
+        <div class="trust-bar"><div class="trust-fill" id="trust-ir"></div></div>
+        <div class="sensor-status" id="status-ir">nominal</div>
+      </div>
+    </section>
+
+    <section class="fault-panel">
+      <h2>Fault Injection</h2>
+      <button id="corruptBtn" class="fault-btn">Corrupt Ultrasonic (toggle)</button>
+      <p class="hint">Dropout is triggered from the physical switch on the rig. Spoofing runs automatically from the attacker board — watch the event log.</p>
+    </section>
+
+    <section class="log-panel">
+      <h2>Event Log</h2>
+      <div id="eventLog" class="event-log"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
